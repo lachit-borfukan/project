@@ -5,7 +5,7 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "nodemon src/index.js"
   },
   "keywords": [
     "javascript"
@@ -13,6 +13,7 @@
   "author": "tarun rai",
   "license": "ISC",
   "devDependencies": {
+    "nodemon": "^3.1.0",
     "stylelint-config-standard-scss": "^13.1.0"
   }
 }
