@@ -1,25 +1,25 @@
 import mongoose from "mongoose";
 import express from "express";
 import { DB_NAME } from "../constants.js";
-import dotenv, { config } from "dotenv";
+import dotenv from "dotenv";
 
 dotenv.config({
-    path:"./env"
+    path:"./src/env"
 })
 
 const app = express();
 
 const connectDB = async () => {
     try{
-        const connectionInstance = await mongoose.connect(`mongodb+srv://Tarun:Tarun11@tarun123.cdy04dh.mongodb.net/${DB_NAME}`)
+        const connectionInstance = await mongoose.connect(`${process.env.MONGODB_URI}/${DB_NAME}`)
         console.log(`\n MONGODB connected !! DB host : ${connectionInstance.connection.host}`)
         app.on("error",()=>{
             console.log("express unable to communicate :",error);
             process.exit(1);
         })
 
-        app.listen(8000,()=>{
-            console.log(`Listening at port 8000`)
+        app.listen(process.env.PORT,()=>{
+            console.log(`Listening at port ${process.env.PORT}`)
         })
     }
     catch(error){
